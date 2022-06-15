@@ -1,0 +1,49 @@
+name: Build Custom Firmaware
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  QMK_REPO: vial-kb/vial-qmk
+  QMK_BRANCH: vial
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    strategy:
+      matrix:
+        keyboards: [sofle/rev1, dumbpad/v1x_dualencoder]
+        keymaps: [takikoo_vial]
+
+steps:
+
+    - name: Checkout custom keymaps
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set Up QMK
+      run: |
+        qmk setup -y
+        
+    - name: Compile Custom Firmware
+      run: |
+        qmk compile -kb ${{ matrix.keyboards }} -km ${{ matrix.keymaps }}
+
+    - name: Upload compiled firmware (build artifact)
+      uses: actions/upload-artifact@v3
+      with:
+        name: Firmware Files
+        path: |
+          ./*.hex
+          ./*.bin
+
+    - name: Upload compiled firmware (tagged release)
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          ./qmk_firmware/*.hex
+          ./qmk_firmware/*.bin
