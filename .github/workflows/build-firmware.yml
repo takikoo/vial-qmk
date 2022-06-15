@@ -17,7 +17,7 @@ jobs:
         keyboards: [sofle/rev1, dumbpad/v1x_dualencoder]
         keymaps: [takikoo_vial]
 
-steps:
+    steps:
 
     - name: Checkout custom keymaps
       uses: actions/checkout@v3
