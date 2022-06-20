@@ -20,7 +20,8 @@ jobs:
         keymaps: [takikoo_vial]
         include:
           - keyboards: sofle/rev1
-            keymaps: token_vial
+            keymaps: [token_vial,kokonaut_vial]
+
 
     steps:
 
