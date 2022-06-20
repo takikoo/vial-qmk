@@ -16,6 +16,9 @@ jobs:
       matrix:
         keyboards: [sofle/rev1, dumbpad/v1x_dualencoder]
         keymaps: [takikoo_vial]
+        include:
+          - keyboards: sofle/rev1
+            keymaps: token_vial
 
     steps:
 
