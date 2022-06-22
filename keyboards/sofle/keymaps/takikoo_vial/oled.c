@@ -38,7 +38,7 @@ static void print_status_narrow(void) {
             oled_write_ln_P(PSTR("Qwrt"), false);
             break;
         case 1:
-            oled_write_ln_P(PSTR("Clmk"), false);
+            oled_write_ln_P(PSTR("Game"), false);
             break;
         default:
             oled_write_P(PSTR("Mod\n"), false);
@@ -59,10 +59,10 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("Lower"), false);
             break;
         case 4:
-            oled_write_P(PSTR("Lay-4"), false);
+            oled_write_P(PSTR("Numpad"), false);
             break;
         case 5:
-            oled_write_P(PSTR("Lay-5"), false);
+            oled_write_P(PSTR("Adjust"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
