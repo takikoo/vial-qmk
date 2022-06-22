@@ -28,6 +28,10 @@
 #define VIAL_UNLOCK_COMBO_COLS { 0, 0, 0, 0 }
 
 #define ENCODER_RESOLUTIONS { 4, 2 }
+
+#ifdef TAPPING_TERM
+  #undef TAPPING_TERM
+#endif
 #define TAPPING_TERM 200
 
 #define NO_ACTION_ONESHOT
